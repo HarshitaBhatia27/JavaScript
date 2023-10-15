@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM-4</title>
+    <style>
+        body{
+            background-color: #212121;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+    <ul class="language">
+        <li>JavaScript</li>
+        <li>Cpp</li>
+    </ul>
+</body>
+<script>
+    //add list element. here we have to traverse the whole tree to add element at the end of list
+    function addLang(langName){
+       const li= document.createElement('li');
+       li.innerHTML= `${langName}`
+       document.querySelector('.language').appendChild(li)
+
+    }
+    addLang("python")
+
+    //another method --> optimised approach. Here, we simply created an li and inserted the child at its end
+    function addLanguage(langName){
+        const li= document.createElement('li');
+        li.appendChild(document.createTextNode(langName))
+        document.querySelector('.language').appendChild(li)
+
+    }
+    addLanguage('Java')
+
+    // edit values
+    const ed= document.querySelector("li:nth-child(2)")
+   // ed.innerHTML="Mojo" //not optimised
+
+   const newli=document.createElement('li')
+   newli.textContent="Mojo"
+   ed.replaceWith(newli)
+   
+   const firstLang=document.querySelector("li:first-child")
+   firstLang.outerHTML="<li>TypeScript</li>"
+
+   //remove
+   const lastlang=document.querySelector("li:last-child")
+   lastlang.remove()
+
+
+</script>
+</html>

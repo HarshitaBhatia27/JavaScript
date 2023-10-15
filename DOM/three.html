@@ -1,0 +1,36 @@
+<!-- how to create nodelists -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM-3</title>
+    <style>
+        body{
+            background-color: #212121;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+
+    // this div is created in memory
+    const div=document.createElement('div')
+    console.log(div);
+    div.className="main"
+    div.id=Math.round(Math.random()*10+1)
+    //div.innerText="How are you feeling today?" //ye jo attributes hai ye overwrite karte hai values. Jo bhi values hai vha per unko pehle select karta hai then set karta h
+
+    //for custom attributes
+    div.setAttribute("title","generate title") // preferable because ye simply jakr value set kardeta hai
+    div.style.backgroundColor="pink"
+    div.style.padding="10px"
+    const addText=document.createTextNode("How are you feeling today?")
+    div.appendChild(addText)
+
+    document.body.appendChild(div) //adding in html
+</script>
+</html>
