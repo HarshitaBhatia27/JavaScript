@@ -1,0 +1,33 @@
+<!-- Async JS -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async js</title>
+</head>
+<body>
+    <h1>Harshita Bhatia</h1>
+    <button id="stop">Stop</button>
+</body>
+<script>
+
+    const sayJs= function(){
+        console.log("Javascript");
+    }
+
+    const change= function(){
+        document.querySelector('h1').innerHTML="Best js series"
+    }
+    const changeme= setTimeout(change,2000) // 2 sec ke time ke baad it will do the work once
+  
+    document.querySelector('#stop').addEventListener('click',function(){
+        clearTimeout(changeme)  //stop the settime out from running
+        console.log("Stopped");
+    })
+    
+    
+
+
+</script>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events </title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li> 
+            <!-- onclick="alert('River')" -- not a feasible approach -->
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+    // all events in js run sequentially. some are exceptions
+    // 2nd approach. it also has a problem that is sometimes on click event doesnt workand give us less features . therefore we should use event listeners
+    // document.getElementById('river').onclick = function(){
+    //     alert("river")
+    // }
+    
+ //-- add event listener-----
+    // document.getElementById('river').addEventListener('click',function(e){
+    //     // alert('river')
+    //     console.log(e);
+    // },false) 
+
+// 3rd parameter is default false but we should write either true or false because khi baar applications hoti hai jo bina true ya false likhe complete nhi hogi (event propagation)
+// attachEvent() --> another method used previously when it was difficult to run applications of interent explorer
+// jQuery --> on()
+
+
+// type of events, timestamp, defaultPrevented, target, toElement, srcElement, currentTarget
+// clientX, clientY, screenX, screenY (positioning)
+// altkey, ctrlkey, shiftkey, keyCode
+
+
+// event propagation --> event bubbling & event capturing
+document.getElementById('images').addEventListener('click',function(e){
+    console.log("clicked inside the ul");
+},false)
+
+document.getElementById('river').addEventListener('click',function(e){
+    console.log('river clicked');
+    e.stopPropagation() // it will stop event bubbling i.e. elemnt bubble hokr uper nhi jayga n only this id will be printed
+},false)
+ // if false hai dono to pehle river wala print hoga then ul wala because --> event bubbling mei uper se neeche jata hai. to firstly element ki id jaygi then parent ki.
+ // in case of true, first parent will be printed -->  event capturing (top to bottom)
+
+document.getElementById('google').addEventListener('click',function(e){
+    console.log('google clicked');
+    e.preventDefault(); //prevent the normal functioning
+}, false)
+
+
+</script>
+</html>
