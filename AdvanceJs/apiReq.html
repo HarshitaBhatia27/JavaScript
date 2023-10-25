@@ -1,0 +1,36 @@
+API Request 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #212121; color: aliceblue;">
+0	UNSENT	= Client has been created. open() not called yet. <br>
+1	OPENED = sopen() has been called.<br>
+2	HEADERS_RECEIVED = send() has been called, and headers and status are available. <br>
+3	LOADING	= Downloading; responseText holds partial data. <br>
+4	DONE = The operation is complete.<br>
+<button id="data">Click here</button>
+</body>
+<script>
+    const xhr= new XMLHttpRequest() // method by which we can sent our req
+    const requestUrl = 'https://api.github.com/users/HarshitaBhatia27'
+    xhr.open('GET', requestUrl)
+    xhr.onreadystatechange = function(){   //continuously monitor the state changes
+        console.log(xhr.readyState);
+        if(xhr.readyState===4){
+            document.querySelector('#data').addEventListener('click',function(){
+                const data= JSON.parse(this.responseText)
+                console.log(data.followers); //most of the type response string mei hi aata hai, so we have to convert it
+            })
+            
+        }
+    } 
+    xhr.send();
+    // console.log() is a part of js but not a part as well.
+ 
+</script>
+</html>
+
