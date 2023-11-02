@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lexical Scoping and closure</title>
+</head>
+<body>
+    <button id="orange">orange</button>
+    <button id="green">green</button>
+    <script>
+    // function init() {
+    //     let name = "Mozilla";
+    //     console.log(secret); // parents dont have access to the variables of child functions 
+    //     function displayName() {
+    //       let secret = "123"
+    //       console.log(name); //here we will get access of the outer function variable
+    //     }
+    //     function inner(){
+    //         console.log(secret); // siblings wil not share the variables, only parent and child can
+    //     }
+    //     displayName();
+    //   }
+    //   init();
+     
+
+    // ********************************** CLOSURES *********************************************************8
+
+    //     function makeFunc() {
+    //         const name = "Mozilla";
+    //         function displayName() {
+    //             console.log(name);
+    //         }
+    //         return displayName; // here the lexical scope of outer function will also come
+    //         }
+
+    // const myFunc = makeFunc();
+    // myFunc();
+    </script>
+
+    <script>
+        // document.getElementById("orange").onclick=function(){
+        //     document.body.style.backgroundColor=`orange`
+        // }
+        // document.getElementById("green").onclick=function(){
+        //     document.body.style.backgroundColor=`green`
+        // }
+
+        function clickHandler(color){
+            return function(){
+            document.body.style.backgroundColor=`${color}`
+            }
+        }
+
+        document.getElementById('orange').onclick=clickHandler("orange")
+        document.getElementById('green').onclick=clickHandler("green")
+    </script>
+</body>
+</html>
+
+  
